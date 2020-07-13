@@ -1,0 +1,10 @@
+package testdateexpires
+/*
+    此规则文件用于测试date-expires属性
+*/
+rule "rule_dateexpires_1"
+    date-expires "2029-10-01 10:00"
+    when
+    then
+        System.out.println("规则rule_dateexpires_1触发");
+end

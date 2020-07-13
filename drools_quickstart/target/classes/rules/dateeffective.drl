@@ -1,0 +1,10 @@
+package testdateeffective
+/*
+    此规则文件用于测试date-effective属性
+*/
+rule "rule_dateeffective_1"
+    date-effective "2020-10-01 10:00"
+    when
+    then
+        System.out.println("规则rule_dateeffective_1触发");
+end
