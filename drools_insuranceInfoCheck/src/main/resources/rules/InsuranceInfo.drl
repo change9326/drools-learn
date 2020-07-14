@@ -1,0 +1,125 @@
+package InsuranceInfo;
+//generated from Decision Table
+import com.learn.drools.insuranceInfoCheck.entity.InsuranceInfo;
+import java.util.ArrayList;
+import java.util.List;
+global java.util.List listRules;
+// rule values at C12, header at C7
+rule "insurance-rules_12"
+	salience 65535
+	agenda-group "sign"
+	when
+		$insuranceRules : InsuranceInfo(param1 != "picc")
+	then
+		listRules.add("保险公司不正确");
+end
+
+// rule values at C13, header at C7
+rule "insurance-rules_13"
+	salience 65534
+	agenda-group "sign"
+	when
+		$insuranceRules : InsuranceInfo(param4 != "北京",param4 != "天津")
+	then
+		listRules.add("销售区域不正确仅支持北京和天津");
+end
+
+// rule values at C14, header at C7
+rule "insurance-rules_14"
+	salience 65533
+	agenda-group "sign"
+	when
+		$insuranceRules : InsuranceInfo(Integer.parseInt(param5) <0 || Integer.parseInt(param5) >17)
+	then
+		listRules.add("投保年龄在0-17岁之间");
+end
+
+// rule values at C15, header at C7
+rule "insurance-rules_15"
+	salience 65532
+	agenda-group "sign"
+	when
+		$insuranceRules : InsuranceInfo(param6 != 20,param6 != 25,param6 != 30)
+	then
+		listRules.add("保险期间必须在20/25/30年");
+end
+
+// rule values at C16, header at C7
+rule "insurance-rules_16"
+	salience 65531
+	agenda-group "sign"
+	when
+		$insuranceRules : InsuranceInfo(param7 != 1,param7 != 3,param7 != 5,param7 != 10,param7 != 15,param7 !=20)
+	then
+		listRules.add("交费期间必须是趸交（用1表示）3、5、10、15、20年");
+end
+
+// rule values at C17, header at C7
+rule "insurance-rules_17"
+	salience 65530
+	agenda-group "sign"
+	when
+		$insuranceRules : InsuranceInfo(param8 != 1,param8 != 2)
+	then
+		listRules.add("交费方式必须是：趸交或年交");
+end
+
+// rule values at C18, header at C7
+rule "insurance-rules_18"
+	salience 65529
+	agenda-group "sign"
+	when
+		$insuranceRules : InsuranceInfo(param6 == 20, Integer.parseInt(param7) > 10)
+	then
+		listRules.add("保险期间为20年期交费期间最长10年交且不能选择[趸交]");
+end
+
+// rule values at C19, header at C7
+rule "insurance-rules_19"
+	salience 65528
+	agenda-group "sign"
+	when
+		$insuranceRules : InsuranceInfo(param6 == 25, Integer.parseInt(param7) > 15)
+	then
+		listRules.add("保险期间为25年期交费期间最长15年交且不能选择[趸交]");
+end
+
+// rule values at C20, header at C7
+rule "insurance-rules_20"
+	salience 65527
+	agenda-group "sign"
+	when
+		$insuranceRules : InsuranceInfo(param6 == 30, Integer.parseInt(param7) > 20)
+	then
+		listRules.add("保险期间为30年期交费期间最长20年交且不能选择[趸交]");
+end
+
+// rule values at C21, header at C7
+rule "insurance-rules_21"
+	salience 65526
+	agenda-group "sign"
+	when
+		$insuranceRules : InsuranceInfo((Integer.parseInt(param5)+Integer.parseInt(param6)) > 40)
+	then
+		listRules.add("被保险人要求：投保年龄+保险期间不得大于40周岁");
+end
+
+// rule values at C22, header at C7
+rule "insurance-rules_22"
+	salience 65525
+	agenda-group "sign"
+	when
+		$insuranceRules : InsuranceInfo(Integer.parseInt(param13) < 5)
+	then
+		listRules.add("投保时约定，最低为5万元，超过部分必须为1000元的整数倍");
+end
+
+// rule values at C23, header at C7
+rule "insurance-rules_23"
+	salience 65524
+	agenda-group "sign"
+	when
+		$insuranceRules : InsuranceInfo(Integer.parseInt(param13) > 62.5)
+	then
+		listRules.add("线上出单基本保额限额62.5万元，超62.5万元需配合契调转线下出单。");
+end

@@ -1,5 +1,5 @@
 package com.learn.creditCardApply
-import com.learn.drools.creditCardApply.entity.CreditCardApplyInfo
+import com.learn.drools.insuranceInfoCheck.entity.CreditCardApplyInfo
 
 //用户信息合法性检查---共4个规则
 rule "如果申请人既没房也没车，同时学历为大专以下，并且月薪少于5000，那么不通过"

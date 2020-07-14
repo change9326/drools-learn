@@ -1,6 +1,6 @@
 //当前规则文件用于计算个人所得税
 package calculation
-import com.learn.drools.creditCardApply.entity.Calculation
+import com.learn.drools.insuranceInfoCheck.entity.Calculation
 
 /**
     当前规则文件中的规则主要分为三类
